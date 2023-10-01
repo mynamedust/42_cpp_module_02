@@ -1,35 +1,32 @@
 #include "Fixed.hpp"
+#include <math.h>
 
 const int Fixed::_bits = 8;
 
+//Constructors
 Fixed::Fixed() {
-	std::cout << "Default constructor called" << std::endl;
 	_value = 0;
 }
 
 Fixed::Fixed(const int i) {
-	std::cout << "Int constructor called" << std::endl;
 	_value = i << _bits;
 }
 
 Fixed::Fixed(const float f) {
-	std::cout << "Float constructor called" << std::endl;
 	_value = roundf(f * (1 << _bits));
 }
 
 Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& f) {
-	std::cout << "Copy constructor called" << std::endl;
 	if (&f != this) {
 		this->_value = f._value;
 	}
 }
 
+//Operators overload
 Fixed& Fixed::operator=(const Fixed& f) {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if (&f != this) {
 		_value = f._value;
 	}
@@ -41,6 +38,72 @@ std::ostream& operator<<(std::ostream& stream, const Fixed& fixed) {
 	return stream;
 }
 
+//Comparison operators
+bool Fixed::operator>(const Fixed& f) {
+	return this->_value > f._value;
+}
+
+bool Fixed::operator<(const Fixed& f) {
+	return this->_value < f._value;
+}
+
+bool Fixed::operator>=(const Fixed& f) {
+	return this->_value >= f._value;
+}
+
+bool Fixed::operator<=(const Fixed& f) {
+	return this->_value <= f._value;
+}
+
+bool Fixed::operator==(const Fixed& f) {
+	return this->_value == f._value;
+}
+
+bool Fixed::operator!=(const Fixed& f) {
+	return this->_value != f._value;
+}
+
+//Arithmetics operators
+Fixed Fixed::operator+(const Fixed& f) {
+	return Fixed(this->toFloat() + f.toFloat());
+}
+
+Fixed Fixed::operator-(const Fixed& f) {
+	return Fixed(this->toFloat() - f.toFloat());
+}
+
+Fixed Fixed::operator/(const Fixed& f) {
+	return Fixed(this->toFloat() / f.toFloat());
+}
+
+Fixed Fixed::operator*(const Fixed& f) {
+	return Fixed(this->toFloat() * f.toFloat());
+}
+
+//Increment && decrement
+Fixed& Fixed::operator++() {
+	_value += 1;
+	return *this;
+}
+
+Fixed& Fixed::operator--() {
+	_value -= 1;
+	return *this;
+}
+
+Fixed Fixed::operator++(int) {
+	Fixed copy(*this);
+	++(*this);
+	return copy;
+}
+
+Fixed Fixed::operator--(int) {
+	Fixed copy(*this);
+	--(*this);
+	return copy;
+}
+
+//Public member functions
 int Fixed::getRawBits(void) const {
 	std::cout << "getRawBits member function called" << std::endl;
 	return _value;

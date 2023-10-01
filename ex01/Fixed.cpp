@@ -1,4 +1,5 @@
 #include "Fixed.hpp"
+#include <math.h>
 
 const int Fixed::_bits = 8;
 

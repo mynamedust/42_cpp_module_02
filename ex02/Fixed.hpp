@@ -13,7 +13,25 @@ public:
 	Fixed(const float f);
 	~Fixed();
 	Fixed(const Fixed &f);
+
 	Fixed& operator=(const Fixed& f);
+	bool operator>(const Fixed& f);
+	bool operator<(const Fixed& f);
+	bool operator>=(const Fixed& f);
+	bool operator<=(const Fixed& f);
+	bool operator==(const Fixed& f);
+	bool operator!=(const Fixed& f);
+
+	Fixed operator+(const Fixed& f);
+	Fixed operator-(const Fixed& f);
+	Fixed operator/(const Fixed& f);
+	Fixed operator*(const Fixed& f);
+
+	Fixed& operator++();
+	Fixed& operator--();
+	Fixed operator++(int);
+	Fixed operator--(int);
+
 	int getRawBits(void) const;
 	void setRawBits(int const raw);
 	float toFloat(void) const;

@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Fixed.hpp"
-#include <math.h>
 
 int main( void ) {
 	Fixed a;
