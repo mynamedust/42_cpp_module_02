@@ -25,6 +25,23 @@ Fixed::Fixed(const Fixed& f) {
 	}
 }
 
+//Static functions
+Fixed& Fixed::min(Fixed& f1, Fixed& f2) {
+	return f1 < f2 ? f1 : f2;
+}
+
+Fixed& Fixed::max(Fixed& f1, Fixed& f2) {
+	return f1 > f2 ? f1 : f2;
+}
+
+const Fixed& Fixed::min(const Fixed& f1, const Fixed& f2) {
+	return f1 < f2 ? f1 : f2;
+}
+
+const Fixed& Fixed::max(const Fixed& f1, const Fixed& f2) {
+	return f1 > f2 ? f1 : f2;
+}
+
 //Operators overload
 Fixed& Fixed::operator=(const Fixed& f) {
 	if (&f != this) {
@@ -39,27 +56,27 @@ std::ostream& operator<<(std::ostream& stream, const Fixed& fixed) {
 }
 
 //Comparison operators
-bool Fixed::operator>(const Fixed& f) {
+bool Fixed::operator>(const Fixed& f) const{
 	return this->_value > f._value;
 }
 
-bool Fixed::operator<(const Fixed& f) {
+bool Fixed::operator<(const Fixed& f) const{
 	return this->_value < f._value;
 }
 
-bool Fixed::operator>=(const Fixed& f) {
+bool Fixed::operator>=(const Fixed& f) const{
 	return this->_value >= f._value;
 }
 
-bool Fixed::operator<=(const Fixed& f) {
+bool Fixed::operator<=(const Fixed& f) const{
 	return this->_value <= f._value;
 }
 
-bool Fixed::operator==(const Fixed& f) {
+bool Fixed::operator==(const Fixed& f) const{
 	return this->_value == f._value;
 }
 
-bool Fixed::operator!=(const Fixed& f) {
+bool Fixed::operator!=(const Fixed& f) const{
 	return this->_value != f._value;
 }
 
