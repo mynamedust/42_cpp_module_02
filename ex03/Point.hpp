@@ -13,6 +13,9 @@ public:
 	Point(const Point& point);
 	Point& operator=(const Point& point);
 	~Point();
+
+	Fixed getX() const;
+	Fixed getY() const;
 };
 
 
