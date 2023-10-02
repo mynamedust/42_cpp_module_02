@@ -12,10 +12,7 @@ Point::~Point() {}
 
 //Operators overload
 Point& Point::operator=(const Point &point) {
-	if ( this != &point ) {
-		(Fixed)this->x = point.getX();
-		(Fixed)this->y = point.getY();
-	}
+	(void)point;
 	return *this;
 }
 
