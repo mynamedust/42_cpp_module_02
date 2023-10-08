@@ -19,11 +19,10 @@ int main() {
 
 	// Проверяем конструкторы копирования и оператор присваивания
 	Point copyPoint = point;
-	std::cout << copyPoint.getX() << "- x " << copyPoint.getY() << "- y" << std::endl;
+	std::cout << copyPoint.getX() << " - x " << copyPoint.getY() << " - y" << std::endl;
 	Point assignedPoint(Fixed(1), Fixed(1));
-	std::cout << assignedPoint.getX() << "- x " << assignedPoint.getY() << "- y" << std::endl;
+	std::cout << assignedPoint.getX() << " - x " << assignedPoint.getY() << " - y" << std::endl;
 	assignedPoint = point;
-	std::cout << assignedPoint.getX() << "- x " << assignedPoint.getY() << "- y" << std::endl;
-
+	std::cout << assignedPoint.getX() << " - x " << assignedPoint.getY() << " - y" << std::endl;
 	return 0;
 }
